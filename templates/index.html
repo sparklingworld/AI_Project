@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ankita AI 💫</title>
+  <style>
+    :root {
+      --lavender: #e2d4ff;
+      --soft-pink: #ffd6f4;
+      --gold: #ffd166;
+      --purple: #8a2be2;
+      --peach: #ffb7b2;
+      --sky: #a2d2ff;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #e7cbf0 0%, #ffe8f1 100%);
+      font-family: 'Comic Sans MS', 'Marker Felt', 'Arial Rounded', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      color: #5a3d7a;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: var(--purple);
+      text-shadow: 0 0 5px rgb(108, 89, 216);
+      animation: pulse 3s infinite;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      background: linear-gradient(45deg, #020554, #034744);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+    }
+
+    .affirmation-bar {
+      width: 100%;
+      max-width: 600px;
+      background: rgb(240, 178, 217);
+      padding: 0.8rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgb(220, 145, 216);
+      border: 2px dashed var(--lavender);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .chat-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255, 240, 245, 0.7);
+      border-radius: 25px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 2px rgb(145, 17, 130);
+      border: 2px solid var(--lavender);
+      backdrop-filter: blur(5px);
+    }
+
+    .chat-box {
+      width: 100%;
+      height: 400px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-right: 10px;
+    }
+
+    .message {
+      padding: 12px 18px;
+      border-radius: 20px;
+      max-width: 80%;
+      position: relative;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--lavender) 0%, #d1b3ff 100%);
+      border-bottom-right-radius: 5px;
+      color: #4a2d6a;
+    }
+
+    .ai {
+      align-self: flex-start;
+      background: linear-gradient(135deg, var(--soft-pink) 0%, #ffc2e2 100%);
+      border-bottom-left-radius: 5px;
+      color: #1a2e33;
+    }
+
+    .input-area {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border-radius: 20px;
+      border: 2px solid var(--lavender);
+      background: rgba(255, 255, 255, 0.7);
+      transition: all 0.3s;
+      box-shadow: 0 3px 12px rgba(200, 180, 255, 0.3);
+      font-family: inherit;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--peach);
+      box-shadow: 0 0 0 4px rgba(255, 183, 178, 0.3);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    input::placeholder {
+      color: #9a7dca;
+      opacity: 0.7;
+    }
+
+    button {
+      background: linear-gradient(135deg, var(--peach) 0%, #ff9aa2 100%);
+      color: white;
+      padding: 0 25px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(255, 144, 179, 0.4);
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #ffa5aa 0%, #ff7b85 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 144, 179, 0.5);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .falling-stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      color: var(--gold);
+      opacity: 0.6;
+      animation: fall linear infinite;
+      font-size: 18px;
+    }
+
+    .bubble-decoration {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 240, 245, 0.4);
+      filter: blur(1px);
+      z-index: -1;
+    }
+
+    /* Keyword bubbles */
+    .bubble-garden {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(255, 240, 250, 0.5);
+      border-radius: 25px;
+      border: 2px dashed var(--lavender);
+    }
+
+    .bubble {
+      background: var(--color);
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      animation: float 5s ease-in-out infinite var(--delay);
+      font-size: 1.1rem;
+    }
+
+    .bubble:hover {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    /* Animations */
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 220, 240, 0.3);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--lavender);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d1b3ff;
+    }
+
+    #avatarWrapper {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#aiAvatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+
+  </style>
+</head>
+<body>
+   <div id="avatarWrapper">
+  <img id="aiAvatar" src="/static/norm.png" alt="Kibo Avatar">
+</div>
+
+  <!-- Background decorations -->
+  <div class="bubble-decoration" style="top: 10%; left: 5%; width: 200px; height: 200px; background: rgba(255, 214, 245, 0.3);"></div>
+  <div class="bubble-decoration" style="bottom: 15%; right: 8%; width: 150px; height: 150px; background: rgba(210, 220, 255, 0.3);"></div>
+  
+  <!-- Falling stars -->
+  <div class="falling-stars" id="fallingStars"></div>
+
+  <h1>🌸 Here For You 🌸</h1>
+
+  <div class="affirmation-bar" id="affirmation">
+    You are worthy of love and kindness. Shine bright today! ✨
+  </div>
+
+  <div class="chat-container">
+    <div class="chat-box" id="chatBox">
+      <div class="message ai">Hello beautiful soul! 🌸<br>I'm here to remind you of your magic. What's on your heart today?</div>
+    </div>
+  </div>
+
+  <div class="bubble-garden">
+    <div class="bubble" style="--color: #e2d4ff; --delay: 0s">sad</div>
+    <div class="bubble" style="--color: #ffd166; --delay: 0.2s">happy</div>
+    <div class="bubble" style="--color: #ffb7b2; --delay: 0.4s">lost</div>
+    <div class="bubble" style="--color: #ff9aa2; --delay: 0.6s">love</div>
+    <div class="bubble" style="--color: #a2d2ff; --delay: 0.8s">peace</div>
+    <div class="bubble" style="--color: #ffdd9e; --delay: 1s">motivate</div>
+    <div class="bubble" style="--color: #d8b5ff; --delay: 1.2s">healing</div>
+    <div class="bubble" style="--color: #ffb3ba; --delay: 1.4s">gratitude</div>
+  </div>
+
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Share your thoughts with love..." />
+    <button onclick="sendMessage()">💖 Send</button>
+  </div>
+
+  <script>
+
+    const affirmations = [
+      "You are enough just as you are 💫",
+      "Your kindness changes the world 🌍",
+      "Today, choose self-love first 🌸",
+      "Every small step forward counts 🦋",
+      "You radiate positive energy ✨",
+      "Your heart makes others bloom 🌷",
+      "Growth comes from self-compassion 🌱",
+      "You are a light in this world 💡",
+      "Repeat after me:I trust the universe, but I’ll still double-check the stars and my heart before I leap"
+    ];
+
+    function createStars() {
+      const container = document.getElementById('fallingStars');
+      const starCount = 30;
+      
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.innerHTML = Math.random() > 0.7 ? '✦' : '✧';
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.fontSize = `${Math.random() * 10 + 14}px`;
+        star.style.animationDuration = `${Math.random() * 9 + 9}s`;
+        star.style.animationDelay = `${Math.random() * 3}s`;
+        container.appendChild(star);
+      }
+    }
+
+  
+    function rotateAffirmation() {
+      const affirmationElement = document.getElementById('affirmation');
+      let currentIndex = 0;
+      
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % affirmations.length;
+        affirmationElement.style.opacity = 0;
+        
+        setTimeout(() => {
+          affirmationElement.textContent = affirmations[currentIndex];
+          affirmationElement.style.opacity = 1;
+        }, 500);
+      }, 8000);
+    }
+
+   
+
+      function speak(text, intent = "default") {
+  const synth = window.speechSynthesis;
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.pitch = 1.1;
+  utter.rate = 1.05;
+  utter.lang = 'en-US';
+
+  const avatar = document.getElementById("aiAvatar");
+
+  if (["happy", "love", "peaceful"].includes(intent)) {
+    avatar.src = "static/move.gif"; 
+  } else if (["sad", "stressed", "lost", "anxious"].includes(intent)) {
+    avatar.src = "/static/norm.png"; 
+  } else {
+    avatar.src = "/static/move.gif"; 
+  }
+
+  synth.speak(utter);
+
+  utter.onend = () => {
+    avatar.src = "/static/norm.png"; 
+  };
+}
+
+    
+    function setupBubbles() {
+      document.querySelectorAll('.bubble').forEach(bubble => {
+        bubble.addEventListener('click', () => {
+          document.getElementById('userInput').value = `I'm feeling ${bubble.textContent}`;
+          document.getElementById('userInput').focus();
+        });
+      });
+    }
+
+    async function sendMessage() {
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if (!message) return;
+
+  const chatBox = document.getElementById("chatBox");
+  const userMsg = document.createElement("div");
+  userMsg.classList.add("message", "user");
+  userMsg.textContent = message;
+  chatBox.appendChild(userMsg);
+
+  input.value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  try {
+    const response = await fetch("/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message })
+    });
+
+    const data = await response.json();
+    
+    const aiMsg = document.createElement("div");
+    aiMsg.classList.add("message", "ai");
+    aiMsg.textContent = data.reply;
+    chatBox.appendChild(aiMsg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+
+    speak(data.reply, data.intent);
+
+    if (data.wisdom) {
+      const tip = document.createElement("div");
+      tip.className = "tinyWisdom";
+      tip.textContent = "🪄 " + data.wisdom;
+      aiMsg.appendChild(tip);
+    }
+
+  } catch (err) {
+    console.error("Error getting AI response:", err);
+  }
+}
+
+
+    
+    window.onload = function() {
+      createStars();
+      rotateAffirmation();
+      setupBubbles();
+      
+      
+      document.getElementById('userInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+    };
+  </script>
+</body>
+</html>

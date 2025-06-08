@@ -1,0 +1,105 @@
+text,intent
+"I'm feeling love",happy
+"Hey there!",casual
+"Good morning!",casual
+"What's up?",casual
+"Hello friend!",casual
+
+"Hi..i am feeling down",sad
+"I'm feeling peace",peaceful
+"I feel sad today",sad
+"I need some motivation",motivation
+"Yay! I'm so happy!",happy
+"I'm tired and anxious",anxious
+"Everything feels heavy",sad
+"I'm doing great today",happy
+"Remind me I'm enough",motivation
+"I can't think clearly",lost
+"I want peace",peaceful
+"I'm feeling insecure",insecure   
+"I wish someone would just remind me I'm okay",motivation
+"Ahh I can't stop smiling right now",happy
+"Lately I've been feeling a little lost",lost
+"Why do I feel like I'm not enough?",insecure
+"My chest feels tight, and I don't know why",anxious
+"I need a small push, just to keep going",motivation
+"I'm super excited about today!",happy
+"Honestly, everything just feels too much",sad
+"I wanna disappear for a while",lost
+"Just wanna sit in silence and breathe",peaceful
+"Do you think I can actually do this?",insecure
+"Give me a reason to believe in myself again",motivation
+"I feel safe when I'm alone in nature",peaceful
+
+"I'm feeling lost",lost
+"The world feels loud, and I feel small",sad
+"Sometimes I feel like no one gets it",lost
+"My mind won't slow down",anxious
+"I feel so heavy today",sad
+"Just remember, we're in this together",consoling
+"Take a deep breath, you're doing better than you think",consoling
+"Did you drink water today? Tiny wins matter!",family
+"Let's always greet others with kindness, no matter what",etiquette
+"I'm feeling so much love today",love
+"My heart feels full",love
+"I'm in love",love
+"This moment is filled with love",love
+"I just love everything right now",love
+"My heart is glowing",love
+"I feel surrounded by love",love
+"There's so much love in the air",love
+"Spending time with family is everything",family
+"I miss my family",family
+"Family is my home",family
+"Mom made my day today",family
+"Dad and I had a great talk",family
+"My siblings make life so fun",family
+"Family means love",family
+"I'm sitting in peace",peaceful
+"Just breathing deeply",peaceful
+"This calm feels so nice",peaceful
+"I'm at peace with everything",peaceful
+"My mind is still",peaceful
+"It's okay to not be okay",consoling
+"I'm here for you",consoling
+"Let yourself feel everything",consoling
+"You're doing better than you think",consoling
+"You're not alone in this",consoling
+"Am I even enough?",insecure  
+"Why do I feel so small?",insecure  
+"I don't think I'm good enough",insecure  
+"I keep doubting myself",insecure  
+"I'm scared I'm not doing well",insecure  
+"I feel overwhelmed",anxious  
+"My mind won't stop racing",anxious  
+"I'm nervous and I don't know why",anxious  
+"I feel like something's wrong",anxious  
+"I'm just really tense right now",anxious  
+"i am happy today",happy
+"Anger is a storm — let it pass before you speak",anger  
+"Kindness always wins",value
+"We should be the reason someone smiles",value
+"Let's always choose compassion",value
+"I believe in doing good",value
+"Character matters more than anything",value
+"Let's lead with empathy",value
+"Never stop being a good person",value
+"I'm sitting in peace",peaceful
+"Just breathing deeply",peaceful
+"This calm feels so nice",peaceful
+"I'm at peace with everything",peaceful
+"My mind is still",peaceful
+
+"Disagree without making enemies",anger  
+"Grandparents' stories are time machines — listen close",family  
+
+"Hi",casual
+"Hey",casual
+"Hello",casual
+"What's up?",casual
+"Good to see you",casual
+"Yo!",casual
+"Hi there!",casual
+"Hey, how are you?",casual
+"Hey buddy",casual
+"Hello again",casual
