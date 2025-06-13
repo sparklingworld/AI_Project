@@ -1,5 +1,6 @@
 # AI_Project
-This project uses:
+
+#This project uses:
 
  A custom-built NLP intent detection system
 
@@ -9,7 +10,7 @@ This project uses:
 
  Flask backend deployed via Render(to be done)
 
-How It Works
+#How It Works
 
  The user sends a message via the frontend.
 
@@ -21,10 +22,14 @@ How It Works
 
  then its responds in a way that fits my given vibe and values.
 
-Frontend	         Backend	                ML/NLP                    	         Hosting
-HTML, CSS, JS	     Flask (Python)          Scikit-learn, SpaCy (or custom)      GitHub Pages + Render
-                                          
-
-
+#Tech Stack
+Frontend	
+HTML, CSS, JS
+Backend	   
+Flask (Python)                                          
+ML/NLP                    	      
+Scikit-learn, SpaCy (or custom)
+Hosting
+GitHub Pages + Render
 
 
