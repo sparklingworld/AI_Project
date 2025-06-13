@@ -281,7 +281,7 @@
 </head>
 <body>
    <div id="avatarWrapper">
-  <img id="aiAvatar" src="/static/norm.png" alt="Kibo Avatar">
+  <img id="aiAvatar" src="static/norm.png" alt="Kibo Avatar">
 </div>
 
   <!-- Background decorations -->
@@ -379,15 +379,15 @@
   if (["happy", "love", "peaceful"].includes(intent)) {
     avatar.src = "static/move.gif"; 
   } else if (["sad", "stressed", "lost", "anxious"].includes(intent)) {
-    avatar.src = "/static/norm.png"; 
+    avatar.src = "static/norm.png"; 
   } else {
-    avatar.src = "/static/move.gif"; 
+    avatar.src = "static/move.gif"; 
   }
 
   synth.speak(utter);
 
   utter.onend = () => {
-    avatar.src = "/static/norm.png"; 
+    avatar.src = "static/norm.png"; 
   };
 }
 
