@@ -1,5 +1,6 @@
 import joblib
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import json
 import random
 import spacy
@@ -9,7 +10,7 @@ from datetime import datetime
 nlp = spacy.load("en_core_web_sm")
 model = joblib.load("ankita_intent_model.pkl")
 app = Flask(__name__)
-
+CORS(app)
 # Load AI data from JSON file
 with open("ankita_ai.json", "r", encoding="utf-8") as f:
     ai_data = json.load(f)
