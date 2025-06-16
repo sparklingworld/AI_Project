@@ -5,8 +5,8 @@ import json
 import random
 import spacy
 from datetime import datetime
-
-
+import spacy.cli
+spacy.cli.download("en_core_web_sm") 
 nlp = spacy.load("en_core_web_sm")
 model = joblib.load("ankita_intent_model.pkl")
 app = Flask(__name__)
