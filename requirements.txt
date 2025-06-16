@@ -2,3 +2,4 @@ Flask
 joblib
 spacy
 flask_cors
+scikit-learn
