@@ -401,6 +401,52 @@
       });
     }
 
+//     async function sendMessage() {
+//   const input = document.getElementById("userInput");
+//   const message = input.value.trim();
+//   if (!message) return;
+
+//   const chatBox = document.getElementById("chatBox");
+//   const userMsg = document.createElement("div");
+//   userMsg.classList.add("message", "user");
+//   userMsg.textContent = message;
+//   chatBox.appendChild(userMsg);
+
+//   input.value = "";
+//   chatBox.scrollTop = chatBox.scrollHeight;
+
+//   try {
+//     const response = await fetch("/chat", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify({ message })
+//     });
+
+//     const data = await response.json();
+    
+//     const aiMsg = document.createElement("div");
+//     aiMsg.classList.add("message", "ai");
+//     aiMsg.textContent = data.reply;
+//     chatBox.appendChild(aiMsg);
+//     chatBox.scrollTop = chatBox.scrollHeight;
+
+
+//     speak(data.reply, data.intent);
+
+//     if (data.wisdom) {
+//       const tip = document.createElement("div");
+//       tip.className = "tinyWisdom";
+//       tip.textContent = "🪄 " + data.wisdom;
+//       aiMsg.appendChild(tip);
+//     }
+
+//   } catch (err) {
+//     console.error("Error getting AI response:", err);
+//   }
+// }
+
     async function sendMessage() {
   const input = document.getElementById("userInput");
   const message = input.value.trim();
@@ -416,7 +462,7 @@
   chatBox.scrollTop = chatBox.scrollHeight;
 
   try {
-    const response = await fetch("/chat", {
+    const response = await fetch("https://ai-project-r0xh.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -425,13 +471,12 @@
     });
 
     const data = await response.json();
-    
+
     const aiMsg = document.createElement("div");
     aiMsg.classList.add("message", "ai");
     aiMsg.textContent = data.reply;
     chatBox.appendChild(aiMsg);
     chatBox.scrollTop = chatBox.scrollHeight;
-
 
     speak(data.reply, data.intent);
 
