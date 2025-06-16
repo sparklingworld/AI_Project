@@ -6,6 +6,7 @@ import random
 import spacy
 from datetime import datetime
 import spacy.cli
+import os
 spacy.cli.download("en_core_web_sm") 
 nlp = spacy.load("en_core_web_sm")
 model = joblib.load("ankita_intent_model.pkl")
@@ -109,4 +110,6 @@ def chat():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run(debug=True)
+     port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
