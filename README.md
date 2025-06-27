@@ -8,7 +8,7 @@
 
  A clean frontend UI with Kibo avatar
 
- Flask backend deployed via Render(to be done)
+ Flask backend deployed via Render(so need to refresh again like for atleast two times and then also have to wait to get the reply!)
 
 #How It Works
 
